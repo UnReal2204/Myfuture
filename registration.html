@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel = "icon" type = "link" href = "logo.jpeg">
+    <title>REGISTRATION FORM</title>
+    <style>
+    body{
+      background-image: linear-gradient(to bottom right,#1f45fc , #6495ed,#82cafa );
+      background-repeat: no-repeat;
+      background-size:cover;
+      background-align:center;
+      padding:40px;
+
+    }
+
+    .input{
+  			width:100%;
+  			box-sizing:border-box;
+  			padding:20px;
+  			margin-bottom:25px;
+  			border: 2px solid #c99383;
+  			color:#ddd;
+  			font-size:14px;
+  			outline:none;
+  			transition:all 0.5s ease;
+  			}
+
+  			.input:focus{
+  			border:2px solid #c99383;
+  			}
+
+        .user{
+			float:center;
+			height:30px;
+			width:100%;
+
+			}
+
+      .label{
+        color:#fff;
+      }
+
+      .btn{
+			width:50%;
+			background:#fff;
+			height:60px;
+			text-align:center;
+			line-height:60px;
+			text-transform:uppercase;
+			color:black;
+			font-weight:bold;
+			letter-spacing:1px;
+			cursor:pointer;
+			margin-bottom:30px;
+			}
+
+			.btn:hover{
+	  background:linear-gradient( #4073ff,#884dff);
+            }
+
+
+#capchatext{
+    margin-top: 10px;
+    box-shadow: 5px 5px 5px 5px #afdcec;
+    width: 60px;;
+    padding: 20px;
+    font-weight: 400;
+    padding-bottom: 0px;
+    height: 40px;
+    user-select: none;
+    font-style: italic;
+    font-size: x-large;
+    border: #fff 2px solid;
+    margin-left: 10px;
+
+
+}
+#user-input{
+    box-shadow: 5px 5px 5px 5px gray;
+    width:auto;
+       margin-right: 10px;
+    padding: 10px;
+    padding-bottom: 0px;
+    height: 40px;
+       border: black 0px solid;
+}
+
+.inline{
+    display:inline-block;
+}
+#btn{
+    box-shadow: 5px 5px 5px grey;
+    color: black;
+    margin: 10px;
+    background-color: white;
+}
+
+p{
+  color:white
+}
+.h2{
+  color:darkblue;
+}
+
+
+    </style>
+
+</head>
+
+<body>
+  <center><h2 class="h2">Registration form</h2></center>
+<form method="post" action="login.html" onsubmit="return Validate()">
+<div>
+<label class="label" for="txtnic" >Enter your NIC</label>
+  <input class="user" type="text" onblur="valnic();" id="nic" placeholder="NIC number"><p id="errph"></p>
+  <br /><br/>
+
+  <label class="label" for="txtfname">Enter your First Name</label>
+  <input  class="user" type="text" onblur="valfn();" id="txtfname" placeholder="First Name"><p id="errName"></p>
+  <br /><br />
+
+  <label class="label" for="txtlname">Enter your Surname</label>
+  <input  class="user" type="text" onblur="valln();" id="txtlname" placeholder="Surname" ><p id="errlname"></p>
+  <br /><br />
+
+  <label class="label" for="txtphonenum">Enter your Phone Number</label>
+  <input  class="user" type="text" onblur="valphonenum()" id="num" placeholder="Phone Number"><p id="errphone"></p>
+  <br /><br />
+
+  <label  class="label" for="txtemail">Enter your Email address</label>
+  <input  class="user" type="text" onblur="valemail();" id="txtemail" placeholder="Email">
+  <p id="output"> </p>
+  <br /><br />
+
+  <label class="label" for="txtsex" id="gender">Enter your Sex</label><br />
+   <input onchange="valGender()" class="label"	type="radio" name="gender" id="male" 	value="Male"  />Male <br />
+   <input  onchange="valGender()" class="label" 	type="radio" name="gender" id="female" 	value="Female"  />Female <br />
+   <input  onchange="valGender()" class="label"	type="radio" name="gender" id="other" 	value="Other"  />Other <br />
+   <p id="output2"></p>
+  <br /><br />
+
+  <label class="label" for="country">Which country are you from: </label>
+  <select id="country" type="text" onblur="valcountry();">
+    <option  class="user" value="null" hidden>Country</option>
+    <option class="user" value="New york">New York</option>
+    <option class="user" value="Mexico">Mexico</option>
+    <option class="user" value="England">England</option>
+    <option class="user"  value="Mauritius">Mauritius</option>
+  </select>
+  <p id="errcountry" </p>
+  <br /><br /></br>
+
+
+<div class="state" >
+  <label  class="label" for="txtstate">Enter your State</label>
+  <input  class="user" type="text" onblur="valstate();" id="txtstate" placeholder="state"><p id="errstate"></p>
+</div><br /><br />
+
+
+
+  <label class="label" for="txtusername">Enter your Username</label>
+  <input  class="user" type="text" onblur="valusername();" id="txtusername" placeholder="Username"><p id="erruname"></p>
+  <br /><br />
+
+
+  <label class="label" >Password</label>
+ 			<input  class="user" onblur="valpwd();" type="password" class="user" placeholder="Password" id="txtpwd"><br><br><p id="errpwd"></p>
+
+  <label class="label">Confirm password</label>
+ 			<input  class="user" onblur="matchPwd();" type="password" class="user" placeholder="Confirm Password" id="txtcpwd"><p id="errcpwd"></p>
+<br><br>
+
+
+<label onload="generatecap()" class="label">Capcha</label><br>
+
+    <div id="user-input" class="inline">
+        <input type="text" id="capchacode" onblur="valcapcha();" placeholder="Capcha code"</input>
+    </div>
+
+    <div class="inline" onclick="generatecap()">
+        <i class="fas fa-sync"></i>
+    </div>
+
+    <div id="capchatext" class="inline" selectable="False">
+    </div><br><br>
+    <input type="button" value="submit"  onclick="valcapcha()" />
+    <input type="button" value="reset capcha" id="cbtn" onclick="generatecap()" />
+    <p id="message"></p>
+
+
+<br /><br /><center>
+<button class="btn" type="submit" value="Register" >Register</button>
+<button class="btn" id="resetbtn" type="button" value="Reset" onclick="reset()" />Reset</button></center>
+</div>
+</form>
+<script defer src="script.js"></script>
+</body>
+</html>

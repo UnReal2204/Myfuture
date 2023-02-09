@@ -1,0 +1,337 @@
+<html>
+<head>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.1.js"> </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel = "icon" type = "link" href = "logo.jpeg">
+  <style>
+
+
+body{
+      background-image: linear-gradient(to bottom right,#1f45fc , #6495ed,#82cafa );
+      background-size: cover;
+       background-repeat: no-repeat;
+      margin: 0px;
+      padding: 0px;
+
+    font-family: 'Roboto', sans-serif;
+}
+
+.app{
+
+  display:flex;
+  color: white;
+  margin: 0px;
+  padding: 0px;
+
+}
+
+.content{
+  height:100%;
+  width:75%;
+
+background:linear-gradient(to bottom right,#1f45fc , #6495ed,#82cafa );
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+
+
+.timer{
+  width:70px;
+  height:70px;
+  border-radius: 50%;
+  border:5px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: 700;
+  position: absolute;
+  top: 15px;
+  left: 80px;
+
+}
+
+.quesAns{
+  height:100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.question{
+width: 60%;
+  background-color: darkblue;
+  border:2px solid blue;
+  text-align: center;
+  padding: 25px;
+  border-radius: 10px;
+  font-size: 20px;
+  position: absolute;
+  align-items: center;
+  justify-content:center;
+  margin:120px;
+
+
+
+}
+.answers{
+  width: 85%;
+  display:flex;
+  justify-content:flex-start;
+  flex-wrap: wrap;
+  padding:150px;
+  margin: 40px;
+  position: relative;
+}
+
+.answer{
+  width:40%;
+  padding: 10px;
+  text-align: center;
+  background: linear-gradient(#1f45fc , #6495ed,#82cafa);
+  border:1px solid white;
+  border-radius: 15px;
+  font-size: 20px;
+  font-weight: 300;
+  margin: 20px 15px 35px 65px;
+  cursor:pointer;
+}
+
+.answer:hover{
+    color: mediumblue;
+    text-decoration: underline;
+}
+
+.answer:active{
+  background-color: mediumblue;
+}
+
+.answer.correct{
+  animation:correct 3s ease forwards;
+}
+
+@keyframes correct{
+  0%,
+  22%,
+  42%{
+    background:mediumblue;
+  }
+  20%,
+  40%,
+  60%{
+    background: linear-gradient(#0e0124,#22074d);
+  }
+  62%,
+  100%{
+    background: green;
+  }
+}
+
+.answer.incorrect{
+  animation:incorrect 3s ease forwards;
+}
+
+
+@keyframes incorrect{
+  0%,
+  22%,
+  42%{
+    background:mediumblue;
+  }
+  20%,
+  40%,
+  60%{
+    background: linear-gradient(#0e0124,#22074d);
+  }
+  62%,
+  100%{
+    background: crimson;
+  }
+}
+
+.pyramid{
+  height:100%;
+  width:25%;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.pricemoney{
+  list-style: none;
+  width:100%;
+  padding:20px;
+}
+
+.pricemoneyItem{
+display: flex;
+align-items: center;
+padding: 5px;
+border-radius: 5px;
+font-size: 20px;
+flex-direction: column;
+}
+
+.pricemoneyItem.active{
+  background:linear-gradient( #4073ff,#884dff);
+}
+
+.pricemoneyItemNum{
+  font-size:18px;
+  font-weight:100;
+  weight:20%;
+}
+
+.pricemoneyItemAmt{
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.btn{
+  height:75;
+  width:100;
+  background-color: blue;
+  color:white;
+  padding:20px;
+  align-items:center;
+  margin:100px;
+  border-radius: 1px;
+  box-shadow: 5px 5px 2px 2px white: ;
+  transition: transform.2s;
+
+
+}
+
+.btn:hover{
+  background-color:#6960ec;
+  transform: scale(1.5);
+}
+
+/* .gameover{
+  background-color: blue;
+  color:white;
+  padding:30px;
+  border-radius: 4px;
+  box-shadow: 2px 2px 20px 23px white; */
+
+}
+
+/* gameover popup */
+.over {
+  width:230px;
+   height:100px;
+   background-color: blue;
+    display:none;
+  position:absolute;
+  left:50px;
+  top:150px;
+  padding:50px;
+  border:6px solid blue;
+  text-align:center;
+  box-shadow: 2px 2px 20px 23px white;
+ }
+
+ /* time's up alert */
+
+.timesup{
+  width:230px;
+   height:100px;
+   background-color: blue;
+    display:none;
+  position:absolute;
+  left:50px;
+  top:150px;
+  padding:50px;
+  border:6px solid blue;
+  text-align:center;
+  box-shadow: 2px 2px 20px 23px white;
+}
+
+/* pop up to show you won */
+.win{
+  width:230px;
+   height:100px;
+   background-color: blue;
+    display:none;
+  position:absolute;
+  left:50px;
+  top:150px;
+  padding:50px;
+  border:6px solid blue;
+  text-align:center;
+  box-shadow: 2px 2px 20px 23px white;
+}
+
+
+
+    </style>
+    <script defer src="mscript.js"></script>
+
+
+  </head>
+<body>
+
+  <div class="app">
+
+  <div class="content">
+
+    <div>
+      <h1 class="over" id="over">GAME OVER!</h1>
+      <h1 class="win"  id="win">Congratulation, you win</h1>
+      <h1 class="timesup" id="timesup">Time's up</h1>
+    </div>
+
+    <p class="question" id="ques"></p>
+  <div class="timer" id="countdown">30</div>
+
+  <div class="answers">
+    <input class="answer"  type="button" id="ans1"></input>
+    <input class="answer"  type="button" id="ans2"></input>
+    <input class="answer"  type="button"id="ans3"></input>
+    <input class="answer"  type="button" id="ans4"></input>
+
+
+    <button class="btn" id="fifty" >Eliminate 50%</button><p id="errfifty" ></p>
+    <button class="btn" id="sq">Swap Question</button><p id="errsq"></p>
+    <button class="btn"  id="paf">Phone a friend</button><p id="errpaf"></p>
+  </div>
+</div>
+<div class="pyramid">
+  <ul class="pricemoney">
+    <li class= "pricemoneyItem " id="p0">$100000</li>
+      <li class= "pricemoneyItem " id="p1">$75000</li>
+      <li class= "pricemoneyItem " id="p2">$50000</li>
+      <li class= "pricemoneyItem " id="p3">$25000</li>
+      <li class= "pricemoneyItem " id="p4">$20000</li>
+      <li class= "pricemoneyItem " id="p5">$15000</li>
+      <li class= "pricemoneyItem " id="p6">$10000</li>
+      <li class= "pricemoneyItem" id="p7">$8000</li>
+      <li class= "pricemoneyItem" id="p8">$4000</li>
+      <li class= "pricemoneyItem" id="p9">$2000</li>
+      <li class= "pricemoneyItem" id="p10">$1000</li>
+      <li class= "pricemoneyItem" id="p11">$800</li>
+      <li class= "pricemoneyItem" id="p12">$400</li>
+      <li class= "pricemoneyItem" id="p13">$200</li>
+      <li class= "pricemoneyItem" id="p14">$100</li>
+      <li class= "pricemoneyItem active" id="p15">$0</li>
+  <span class="pricemoneyItemNum"</span>
+  <span class="pricemoneyItemAmt"</span>
+  </li>
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+
+</body>
+</html>

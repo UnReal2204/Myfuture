@@ -1,0 +1,61 @@
+body{
+  background-image: linear-gradient(to bottom right,#1f45fc , #6495ed,#82cafa );
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-align:center;
+  padding:40px;
+  color:white;
+
+}
+
+
+
+.navigation {
+ background:linear-gradient( #4073ff,#884dff);
+  overflow: hidden;
+  position:relative;
+  width:100%;
+  height:6%;
+  padding-bottom:0.5%;
+
+}
+
+.navigation a:hover{
+	color:black;
+}
+
+/* Style the links inside the navigation bar */
+.navigation a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+  font-size: 17px;
+  display:block;
+}
+
+.button{
+	float:right;
+background-image: linear-gradient(to bottom right,#1f45fc , #6495ed,#82cafa );
+}
+
+button a:hover{
+	color:black;
+}
+
+.h1{
+  text-align: center;
+  color: white;
+}
+
+.cover{
+  height:100%;
+  width:100%;
+}
+
+.best{
+background:linear-gradient( #4073ff,#884dff);
+	align-items:center;
+  color:white;
+				}
